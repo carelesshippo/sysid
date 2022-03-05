@@ -127,9 +127,11 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
   m_logger.Log(m_leftPosition(), m_rightPosition(), m_leftRate(), m_rightRate(),
                m_gyroPosition(), m_gyroRate());
-  sysid::SetMotorControllers(m_logger.GetLeftMotorVoltage(), m_leftControllers);
+  units::volt_t leftVoltage = m_logger.GetLeftMotorVoltage();
+  sysid::SetMotorControllers(leftVoltage, m_leftControllers);
   sysid::SetMotorControllers(m_logger.GetRightMotorVoltage(),
                              m_rightControllers);
+  frc::SmartDashboard::PutNumber("Voltage", leftVoltage.value());
 }
 
 void Robot::TeleopInit() {}
