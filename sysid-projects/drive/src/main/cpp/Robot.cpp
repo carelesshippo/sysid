@@ -20,7 +20,7 @@
 
 #include "sysid/generation/SysIdSetup.h"
 
-Robot::Robot() : frc::TimedRobot(7_ms) {
+Robot::Robot() : frc::TimedRobot(20_ms) {
   m_json = sysid::GetConfigJson();
 
   try {
